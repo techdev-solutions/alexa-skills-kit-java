@@ -13,6 +13,8 @@
 
 package com.amazon.speech.speechlet;
 
+import com.amazon.speech.speechlet.interfaces.gameengine.GameEngine;
+import com.amazon.speech.speechlet.interfaces.gameengine.request.InputHandlerEventRequest;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -69,7 +71,7 @@ public class SpeechletRequestDispatcher {
     public SpeechletRequestDispatcher(Speechlet speechlet) {
         this(new SpeechletToSpeechletV2Adapter(speechlet));
     }
-    
+
     /**
      * Processes the provided {@link SpeechletRequestEnvelope} and generates an appropriate response
      * after dispatching the appropriate method calls on the {@link SpeechletV2} provided at
@@ -303,6 +305,15 @@ public class SpeechletRequestDispatcher {
                             displaySpeechlet.onElementSelected(typeSpecificRequestEnvelope);
                     saveSessionAttributes = shouldSaveSessionAttributes(speechletResponse);
                 }
+            }
+            /** GameEngine **/
+        } else if (speechletRequest instanceof InputHandlerEventRequest) {
+            if(speechlet instanceof GameEngine) {
+                GameEngine gameEngine = (GameEngine) speechlet;
+                @SuppressWarnings("unchecked")
+                SpeechletRequestEnvelope<InputHandlerEventRequest> typeSpecificRequestEnvelope =
+                        (SpeechletRequestEnvelope<InputHandlerEventRequest>) requestEnvelope;
+                speechletResponse = gameEngine.onInputHandlerHandlerEvent(typeSpecificRequestEnvelope);
             }
             /** SpeechletV2 **/
         } else if (speechletRequest instanceof CoreSpeechletRequest) {
