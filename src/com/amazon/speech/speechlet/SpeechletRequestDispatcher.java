@@ -308,7 +308,7 @@ public class SpeechletRequestDispatcher {
             }
             /** GameEngine **/
         } else if (speechletRequest instanceof InputHandlerEventRequest) {
-            if(speechlet instanceof GameEngine) {
+            if (speechletWithInterfaces instanceof GameEngine) {
                 GameEngine gameEngine = (GameEngine) speechlet;
                 @SuppressWarnings("unchecked")
                 SpeechletRequestEnvelope<InputHandlerEventRequest> typeSpecificRequestEnvelope =

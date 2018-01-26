@@ -5,6 +5,6 @@ import java.util.List;
 public class Parameters {
 
     public String triggerEvent;
-    public Double triggerEventTimeMs;
+    public int triggerEventTimeMs;
     public List<Animation> animations;
 }

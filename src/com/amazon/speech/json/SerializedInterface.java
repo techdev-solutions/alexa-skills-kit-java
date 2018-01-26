@@ -19,6 +19,7 @@ import com.amazon.speech.speechlet.interfaces.audioplayer.AudioPlayerInterface;
 import com.amazon.speech.speechlet.interfaces.audioplayer.AudioPlayerState;
 import com.amazon.speech.speechlet.interfaces.display.DisplayInterface;
 import com.amazon.speech.speechlet.interfaces.display.DisplayState;
+import com.amazon.speech.speechlet.interfaces.gameengine.GameEngineInterface;
 import com.amazon.speech.speechlet.interfaces.system.SystemInterface;
 import com.amazon.speech.speechlet.interfaces.system.SystemState;
 import com.amazon.speech.speechlet.interfaces.videoapp.VideoAppInterface;
@@ -27,6 +28,7 @@ enum SerializedInterface {
     AudioPlayer(AudioPlayerInterface.class, AudioPlayerState.class),
     Display(DisplayInterface.class, DisplayState.class),
     VideoApp(VideoAppInterface.class, null /* no state */),
+    GameEngine(GameEngineInterface.class, null),
     System(SystemInterface.class, SystemState.class);
 
     private final Class<? extends Interface> interfaceClass;

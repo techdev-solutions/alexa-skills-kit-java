@@ -24,6 +24,9 @@ import com.amazon.speech.speechlet.interfaces.audioplayer.directive.PlayDirectiv
 import com.amazon.speech.speechlet.interfaces.audioplayer.directive.StopDirective;
 import com.amazon.speech.speechlet.interfaces.core.directive.HintDirective;
 import com.amazon.speech.speechlet.interfaces.display.directive.RenderTemplateDirective;
+import com.amazon.speech.speechlet.interfaces.gameengine.directive.SetLightDirective;
+import com.amazon.speech.speechlet.interfaces.gameengine.directive.StartInputHandlerDirective;
+import com.amazon.speech.speechlet.interfaces.gameengine.directive.StopInputHandlerDirective;
 import com.amazon.speech.speechlet.interfaces.videoapp.directive.LaunchDirective;
 import com.amazon.speech.speechlet.services.SpeakDirective;
 
@@ -43,7 +46,10 @@ import com.amazon.speech.speechlet.services.SpeakDirective;
         @JsonSubTypes.Type(ElicitSlotDirective.class),
         @JsonSubTypes.Type(ConfirmSlotDirective.class),
         @JsonSubTypes.Type(ConfirmIntentDirective.class),
-        @JsonSubTypes.Type(SpeakDirective.class)
+        @JsonSubTypes.Type(SpeakDirective.class),
+        @JsonSubTypes.Type(StartInputHandlerDirective.class),
+        @JsonSubTypes.Type(StopInputHandlerDirective.class),
+        @JsonSubTypes.Type(SetLightDirective.class)
 })
 public abstract class Directive {
 }
